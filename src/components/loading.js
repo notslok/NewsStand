@@ -5,7 +5,7 @@ export class loading extends Component {
   render() {
     return (
       <div className='text-center'>
-        <img src={load} alt="loading..."/>
+        <img className="my-3" src={load} alt="loading..."/>
       </div>
     )
   }

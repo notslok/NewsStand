@@ -8,7 +8,7 @@ export class Newsitem extends Component {
         <div className="card">
             <img src={imageUrl ? imageUrl : `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0IUOeKn57mlLy9WBBOmXcERYfudAhda2HjA&usqp=CAU`} className="card-img-top" alt="..."/>
             <div className="card-body shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-                <h5 className="card-title">{title}</h5>
+                <h5 className="card-title">{title ? title : "<Tile here>"}</h5>
                 <p className="card-text">{description}</p>
                 <span className="badge text-bg-success">{source}</span>
                 <p className="card-text"><small className="text-body-secondary fst-italic">{date.toString()}</small></p>

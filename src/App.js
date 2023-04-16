@@ -14,7 +14,7 @@ export default class App extends Component {
         <Navbar/>
         <Routes>
         {/* including key for remounting component while navigating through navbar*/}
-            <Route exact path="/" element={<News key="general" pageSize={3} apiKey="27db3380c81542af8898fffbfb090756" country="in" category="sports"/>}/>  
+            <Route exact path="/" element={<News key="general" pageSize={3} apiKey="27db3380c81542af8898fffbfb090756" country="in" category="general"/>}/>  
             <Route exact path="/business" element={<News key="business" pageSize={3} apiKey="27db3380c81542af8898fffbfb090756" country="in" category="business"/>}/>
             <Route exact path="/entertainment" element={<News key="entertainment" pageSize={3} apiKey="27db3380c81542af8898fffbfb090756" country="in" category="entertainment"/>}/>
             <Route exact path="/general" element={<News key="general" pageSize={3} apiKey="27db3380c81542af8898fffbfb090756" country="in" category="general"/>}/>
