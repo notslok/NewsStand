@@ -48,26 +48,18 @@ const News = (props) => {
 
   // Replacement for componentDidMount()
   useEffect(() => {
+    document.title = `${capitalizeFirstLetter(props.category)} - NewsStand`;
     updateNews();
+    // ignore warnings regarding updateNews()...
+    // eslint-disable-next-line
   }, [])
 
 
-  // prev and next button handler
-  // const handleNextClick = async () => {
-  //   setPage(page + 1)
-  //   updateNews();
-  // };
-
-  // const handlePreviousClick = async () => {
-  //   setPage(page - 1)
-  //   updateNews();
-  // };
-
   const fetchMoreData = async () => {
 
-    setPage(page + 1);
-    
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${this.state.page}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+
+    setPage(page+1); //--> async behaviour
     
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -80,7 +72,7 @@ const News = (props) => {
     return (
       <>
         <div className="container my-3">
-          <h1 className="text-center" style={{ margin: "40px 0px" }}>
+          <h1 className="text-center" style={{ margin: "40px 0px", marginTop: '90px' }}>
             {capitalizeFirstLetter(props.category)} Headlines
           </h1>
 
@@ -127,14 +119,14 @@ const News = (props) => {
 News.defaultProps = {
   country: "in",
   category: "general",
-  pageSize: 6,
+  pageSize: 3,
 };
 
 News.propTypes = {
   // setting expected data types of of defaultProps
   country: PropTypes.string,
-  pageSize: PropTypes.number,
   category: PropTypes.string,
+  pageSize: PropTypes.number,
 };
 
 
