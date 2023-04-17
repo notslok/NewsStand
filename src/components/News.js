@@ -52,7 +52,6 @@ export class News extends Component {
 
     this.setState({
       articles: parsedData.articles,
-      loading: false,
       totalResults: parsedData.totalResults,
     });
     // }
@@ -60,13 +59,9 @@ export class News extends Component {
 
   async componentDidMount() {
     //runs after render
+    console.log(this.state.loading)
     this.updateNews();
-  }
-
-  componentWillUnmount() {
-    this.setState({
-        loading:false
-    })
+    this.setState({loading: false});
   }
 
   // prev and next button handler
@@ -101,15 +96,13 @@ export class News extends Component {
 
           {/* This loader not needed for infinite scroll feature */}
           {/* {this.state.loading && <Loader/>} */}
-
+          
           <InfiniteScroll
             dataLength={this.state.articles.length}
             next={this.fetchMoreData}
             hasMore={this.state.articles.length !== this.state.totalResults}
             loader={<Loader/>}
           >
-            {console.log(this.state.articles.length)}
-            {console.log(this.state.loading)}
             <div className="row">
               {this.state.articles.map((element) => {
                 return (
@@ -135,27 +128,6 @@ export class News extends Component {
               })}
             </div>
           </InfiniteScroll>
-
-          <div className="d-flex justify-content-evenly">
-            <button
-              disabled={this.state.page <= 1}
-              type="button"
-              className="btn btn-outline-dark"
-              onClick={this.handlePreviousClick}
-            >
-              &larr; Previous
-            </button>
-            <button
-              disabled={
-                this.state.page + 1 > Math.ceil(this.state.totalResults / 3)
-              }
-              type="button"
-              className="btn btn-outline-dark"
-              onClick={this.handleNextClick}
-            >
-              Next &rarr;
-            </button>
-          </div>
         </div>
       </>
     );
