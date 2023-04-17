@@ -53,15 +53,15 @@ const News = (props) => {
 
 
   // prev and next button handler
-  const handleNextClick = async () => {
-    setPage(page + 1)
-    updateNews();
-  };
+  // const handleNextClick = async () => {
+  //   setPage(page + 1)
+  //   updateNews();
+  // };
 
-  const handlePreviousClick = async () => {
-    setPage(page - 1)
-    updateNews();
-  };
+  // const handlePreviousClick = async () => {
+  //   setPage(page - 1)
+  //   updateNews();
+  // };
 
   const fetchMoreData = async () => {
 
