@@ -40,6 +40,8 @@ export class News extends Component {
 
   // USING DRY PRINCIPLE
   async updateNews() {
+    this.props.setProgress(10);
+
     // if(!(this.state.page > Math.ceil(this.state.totalResults/this.props.pageSize))){
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
 
@@ -47,6 +49,8 @@ export class News extends Component {
 
     let data = await fetch(url);
     let parsedData = await data.json();
+    
+    this.props.setProgress(50);
 
     console.log(parsedData.articles);
 
@@ -55,6 +59,7 @@ export class News extends Component {
       totalResults: parsedData.totalResults,
     });
     // }
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
