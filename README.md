@@ -13,3 +13,9 @@
 >> **Top loading bar** \
 >> **Function based components** \
 >> **Class based components** \
+|
+|
++ About section replaced with **xkcd** cartoon section
+|
+|
++ Tarball of Proxy express server to tackle **xkcd** endpoint cors error added. 
